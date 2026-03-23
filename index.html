@@ -8,9 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <!-- Leaflet map -->
+  <!-- Leaflet map CSS only in head -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -453,10 +452,13 @@
     </div>
   </footer>
 
+  <!-- Leaflet JS loaded here so DOM is ready -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     // =====================
     // ROUTE MAP (Leaflet)
     // =====================
+    window.addEventListener('load', function () {
     const lakes = [
       { name: "Mohun Lake", lat: 50.175, lng: -125.515, note: "Start & End · Morton Lake Provincial Park boat launch · 10:00 AM May 29", day: "start" },
       { name: "Twin Lake", lat: 50.163, lng: -125.533, note: "Portage 0.8 km in (steep descent)", day: 1 },
@@ -544,6 +546,10 @@
       return div;
     };
     legend.addTo(map);
+
+    // Force tile redraw after layout settles
+    setTimeout(function () { map.invalidateSize(); }, 300);
+    }); // end window.load
   </script>
 
   <script>
