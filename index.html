@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Leaflet map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -25,10 +28,12 @@
   <!-- NAV -->
   <nav class="sticky-nav">
     <a href="#overview">Overview</a>
+    <a href="#map">Map</a>
     <a href="#itinerary">Itinerary</a>
     <a href="#gear">Gear</a>
     <a href="#getting-there">Getting There</a>
     <a href="#safety">Safety</a>
+    <a href="#ciders">BC Ciders</a>
   </nav>
 
   <!-- OVERVIEW -->
@@ -81,8 +86,18 @@
     </div>
   </section>
 
+  <!-- MAP -->
+  <section id="map" class="section section-alt">
+    <div class="container">
+      <h2>Route Map</h2>
+      <p class="lead" style="margin-bottom:1.5rem;">Interactive map of the 47 km counter-clockwise circuit. Click any marker for lake details. Coordinates are approximate — carry the <a href="https://store.avenza.com/products/sayward-canoe-route-hike-aware-map" target="_blank" rel="noopener">Avenza digital map</a> on the water.</p>
+      <div id="route-map"></div>
+      <p style="font-size:0.8rem;color:#7a9a7a;margin-top:0.6rem;">Map data © OpenStreetMap contributors · Route approximate</p>
+    </div>
+  </section>
+
   <!-- SCHEDULE -->
-  <section id="itinerary" class="section section-alt">
+  <section id="itinerary" class="section">
     <div class="container">
       <h2>Trip Schedule</h2>
 
@@ -266,7 +281,7 @@
   </section>
 
   <!-- GETTING THERE -->
-  <section id="getting-there" class="section section-alt">
+  <section id="getting-there" class="section">
     <div class="container">
       <h2>Getting There</h2>
 
@@ -316,7 +331,7 @@
   </section>
 
   <!-- SAFETY -->
-  <section id="safety" class="section">
+  <section id="safety" class="section section-alt">
     <div class="container">
       <h2>Safety &amp; Tips</h2>
 
@@ -370,6 +385,66 @@
     </div>
   </section>
 
+  <!-- BC CIDERS -->
+  <section id="ciders" class="section">
+    <div class="container">
+      <h2>BC Ciders Worth Packing</h2>
+      <p class="lead">Vancouver Island and BC produce some of Canada's best craft ciders. Stock up before you launch — you've earned it.</p>
+
+      <div class="cider-grid">
+
+        <div class="cider-card cider-local">
+          <div class="cider-badge">30 min from launch</div>
+          <h3>Coastal Black Estate Winery</h3>
+          <p class="cider-location">📍 Black Creek, BC (Comox Valley)</p>
+          <p>4-generation family farm. Dry apple cider and apple-cranberry from 80+ acres of blackberries and blueberries. Available at Campbell River liquor stores including Lucky's, Green Rock, and Northgate.</p>
+          <div class="cider-style">Dry Apple · Apple-Cranberry</div>
+        </div>
+
+        <div class="cider-card cider-local">
+          <div class="cider-badge">90 min from launch</div>
+          <h3>Raven's Moon Craft Cider</h3>
+          <p class="cider-location">📍 Courtenay, BC</p>
+          <p>Born from an organic blueberry farm on the Puntledge River. Winemaker-influenced production. Their Polaris iced cider is exceptional. Tasting room opens in May — worth a stop en route.</p>
+          <div class="cider-style">Apple · Apple-Blueberry · Polaris (iced)</div>
+        </div>
+
+        <div class="cider-card">
+          <h3>Sea Cider Farm &amp; Ciderhouse</h3>
+          <p class="cider-location">📍 Saanichton (Victoria area), BC</p>
+          <p>One of the most decorated cideries in Canada. 50+ varieties of heritage apples on a 10-acre farm. Wassail (spiced, orange peel) and Rumrunner (bourbon barrel-aged) are must-tries. Widely distributed across BC.</p>
+          <div class="cider-style">Wassail · Rumrunner · Traditional</div>
+        </div>
+
+        <div class="cider-card">
+          <h3>Merridale Cidery &amp; Distillery</h3>
+          <p class="cider-location">📍 Cobble Hill, Cowichan Valley, BC</p>
+          <p>30+ years, woman-led, multiple award-winner. Heritage cider apples high in tannins. Scrumpy (oak-aged) and Cyser (wildflower honey blend, Viking-style) are cult favourites in BC. Available province-wide.</p>
+          <div class="cider-style">Scrumpy · Traditional Dry · Cyser</div>
+        </div>
+
+        <div class="cider-card">
+          <h3>Tod Creek Craft Cider</h3>
+          <p class="cider-location">📍 Victoria, BC</p>
+          <p>Adventurous blends — Mala-Hop brings IPA-style hopping to apple cider; Coastal Blue adds BC blueberry. Great in cans for portaging (no glass at campsites).</p>
+          <div class="cider-style">Mala-Hop · Coastal Blue</div>
+        </div>
+
+        <div class="cider-card">
+          <h3>Dominion Cider Co.</h3>
+          <p class="cider-location">📍 Summerland, Okanagan, BC</p>
+          <p>Heirloom apples, their own orchard. Clean, crisp, orchard-forward. One of the most accessible mainland craft ciders to find in Campbell River-area stores. Great everyday trail cider.</p>
+          <div class="cider-style">Dry Apple · Semi-Sweet</div>
+        </div>
+
+      </div>
+
+      <div class="note">
+        <strong>Pro tip:</strong> Stock up at Campbell River liquor stores before heading to the launch. No glass at backcountry campsites — cans only on the circuit. Coastal Black and Dominion are your most likely finds locally.
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
@@ -377,6 +452,99 @@
       <p>Route info from <a href="https://offtracktravel.ca/sayward-forest-canoe-circuit/" target="_blank" rel="noopener">Off Track Travel</a> &amp; BC Sites and Trails</p>
     </div>
   </footer>
+
+  <script>
+    // =====================
+    // ROUTE MAP (Leaflet)
+    // =====================
+    const lakes = [
+      { name: "Mohun Lake", lat: 50.175, lng: -125.515, note: "Start & End · Morton Lake Provincial Park boat launch · 10:00 AM May 29", day: "start" },
+      { name: "Twin Lake", lat: 50.163, lng: -125.533, note: "Portage 0.8 km in (steep descent)", day: 1 },
+      { name: "Amor Lake", lat: 50.150, lng: -125.572, note: "Day 1 camp — Mr. Canoehead campsite (tent platforms, sandy beach)", day: 1 },
+      { name: "Surprise Lake", lat: 50.138, lng: -125.588, note: "Road-accessible, quiet lake", day: 2 },
+      { name: "Brewster Lake", lat: 50.108, lng: -125.608, note: "Longest portage in (2.2 km) · Large, wind-exposed — paddle early", day: 2 },
+      { name: "Whymper Lake", lat: 50.075, lng: -125.602, note: "Lily pads · no road access", day: 2 },
+      { name: "Whymper Creek", lat: 50.055, lng: -125.590, note: "⚠️ Two river sections (300m + 400m) · Scout before paddling", day: 2 },
+      { name: "Fry Lake", lat: 50.038, lng: -125.578, note: "Day 2 camp — Orchard Meadow Rec Site · Watch for deadheads", day: 2 },
+      { name: "Gray Lake", lat: 50.030, lng: -125.563, note: "Brittany Bay Rec Site", day: 3 },
+      { name: "Goose Lake", lat: 50.025, lng: -125.540, note: "Island campsites", day: 3 },
+      { name: "Lower Campbell Lake", lat: 50.018, lng: -125.520, note: "Largest lake · Most wind-exposed — paddle early morning", day: 3 },
+      { name: "Gosling Lake", lat: 50.048, lng: -125.500, note: "Portage 1.1 km uphill in", day: 3 },
+      { name: "Higgins Lake", lat: 50.072, lng: -125.496, note: "Short paddle", day: 3 },
+      { name: "Lawier Lake", lat: 50.100, lng: -125.500, note: "⚠️ Portage 0.4 km in — steep, roots, NO canoe cart", day: 3 },
+    ];
+
+    const dayColors = { start: "#2d6a2d", 1: "#3a9e3a", 2: "#e06c2a", 3: "#2878c8" };
+    const dayLabels = { start: "Start/End", 1: "Day 1", 2: "Day 2", 3: "Day 3" };
+
+    const map = L.map('route-map', { zoomControl: true }).setView([50.095, -125.550], 11);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 17
+    }).addTo(map);
+
+    // Draw route polyline (counter-clockwise loop back to start)
+    const routeCoords = lakes.map(l => [l.lat, l.lng]);
+    routeCoords.push([lakes[0].lat, lakes[0].lng]); // close the loop
+
+    L.polyline(routeCoords, {
+      color: '#2d6a2d',
+      weight: 3,
+      opacity: 0.8,
+      dashArray: '8, 4'
+    }).addTo(map);
+
+    // Draw direction arrows along the route
+    const arrowIcon = L.divIcon({ className: '', html: '<div style="color:#2d6a2d;font-size:16px;">➤</div>', iconSize: [16,16], iconAnchor: [8,8] });
+
+    // Add lake markers
+    lakes.forEach((lake, i) => {
+      const color = dayColors[lake.day] || "#2d6a2d";
+      const isStart = lake.day === "start";
+      const icon = L.divIcon({
+        className: '',
+        html: `<div style="
+          background:${color};
+          color:#fff;
+          border-radius:50%;
+          width:${isStart ? 20 : 14}px;
+          height:${isStart ? 20 : 14}px;
+          border:3px solid #fff;
+          box-shadow:0 1px 4px rgba(0,0,0,0.4);
+          display:flex;align-items:center;justify-content:center;
+          font-size:9px;font-weight:700;
+        ">${isStart ? '⛵' : i + 1}</div>`,
+        iconSize: [isStart ? 20 : 14, isStart ? 20 : 14],
+        iconAnchor: [isStart ? 10 : 7, isStart ? 10 : 7]
+      });
+
+      const marker = L.marker([lake.lat, lake.lng], { icon }).addTo(map);
+      marker.bindPopup(`
+        <div style="font-family:Inter,sans-serif;min-width:180px;">
+          <strong style="font-size:1rem;color:#1a2e1a;">${lake.name}</strong><br>
+          <span style="font-size:0.75rem;background:${color};color:#fff;padding:1px 6px;border-radius:10px;display:inline-block;margin:4px 0;">${dayLabels[lake.day]}</span>
+          <p style="margin:6px 0 0;font-size:0.85rem;color:#4a5e4a;">${lake.note}</p>
+        </div>
+      `);
+    });
+
+    // Legend
+    const legend = L.control({ position: 'bottomright' });
+    legend.onAdd = function() {
+      const div = L.DomUtil.create('div', '');
+      div.style.cssText = 'background:#fff;padding:10px 14px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);font-family:Inter,sans-serif;font-size:0.8rem;line-height:1.8;';
+      div.innerHTML = `
+        <div style="font-weight:600;margin-bottom:4px;">Route Days</div>
+        <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#2d6a2d;margin-right:6px;"></span>Start/End</div>
+        <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#3a9e3a;margin-right:6px;"></span>Day 1 — May 29</div>
+        <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e06c2a;margin-right:6px;"></span>Day 2 — May 30</div>
+        <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#2878c8;margin-right:6px;"></span>Day 3 — May 31</div>
+      `;
+      return div;
+    };
+    legend.addTo(map);
+  </script>
 
   <script>
     // Smooth scroll for nav links
